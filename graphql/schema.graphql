@@ -1,0 +1,16 @@
+type Anime {
+  id: ID!
+  title: String!
+  description: String!
+  plot: String!
+}
+
+input PaginationInput {
+  limit: Int!
+  offset: Int!
+}
+
+type Query {
+  animes(pagination: PaginationInput): [Anime!]!
+  anime(id: ID!): Anime!
+}

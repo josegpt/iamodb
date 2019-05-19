@@ -1,0 +1,31 @@
+syntax = "proto3";
+package pb;
+
+message Anime {
+  uint64 id = 1;
+  string title = 2;
+  string description = 3;
+  string plot = 4;
+}
+
+message GetAnimesRequest {
+  uint64 limit = 1;
+  uint64 offset = 2;
+}
+
+message GetAnimesResponse {
+  repeated Anime animes = 1;
+}
+
+message GetAnimeRequest {
+  uint64 id = 1;
+}
+
+message GetAnimeResponse {
+  Anime anime = 1;
+}
+
+service AnimeService {
+  rpc GetAnimes (GetAnimesRequest) returns (GetAnimesResponse) {}
+  rpc GetAnime (GetAnimeRequest) returns (GetAnimeResponse) {}
+}
